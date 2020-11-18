@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define TAB2SIZE 100
+#define TAB2SIZE 20
 
 int main() {
 	int myTab1[10];
@@ -26,11 +26,12 @@ int main() {
 
 	
 	afficheTab(myTab2, tabSize, nbElts); //affichage des 20 premieres valeurs
-
 	printf("\n");
-	ajoutElementDansTableau(myTab2, tabSize, nbElts, 30);
+
+	ajoutElementDansTableau(myTab2, &tabSize, &nbElts, 30);
 	printf("\n");
 	afficheTab(myTab2, tabSize, nbElts);
+	printf("\n %d \n %d", tabSize, nbElts);
 
 
 

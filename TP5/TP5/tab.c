@@ -2,6 +2,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+#define TAILLEAJOUT 50
+
 int initTab(int* tab, int size)
 {
 	if (size < 0 || tab == NULL) {
@@ -22,28 +24,27 @@ int afficheTab(int* tab, int size, int nbElts) {
 	}
 }
 int* ajoutElementDansTableau(int* tab, int* size, int* nbElts, int element) {
-	if (size < 0 || tab == NULL || size < nbElts) {
+	if (*size < 0 || tab == NULL || *size < *nbElts) {
 		return -1;
 	}
-	else if (size == nbElts) {
-		*size += 1;
+	else if (*size == *nbElts) {
 		int *save = tab;
-		tab = (int*) realloc(tab, *size * sizeof(int));
+		tab = (int*) realloc(tab, (*size + TAILLEAJOUT) * sizeof(int));
 		if (tab == NULL) {
 			tab = save;
-			*size -= 1;
 			printf("\n Mémoire insuffisante \n");
 			return(-1);
 		}
 		else {
+			*size += TAILLEAJOUT;
 			*nbElts += 1;
 			*(tab + *nbElts) = element;
 			return *nbElts;
 		}
 	}
 	else {
-		*(tab + *nbElts) = element;
-		//*nbElts += 1;
+		*(tab+*nbElts) = element;
+		*nbElts += 1;
 		return *nbElts;
 	}
 
