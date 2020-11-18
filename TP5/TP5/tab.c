@@ -17,7 +17,7 @@ int afficheTab(int* tab, int size, int nbElts) {
 		return -1;
 	}
 	else {
-		for (int i = 0; i < nbElts; i++) printf("\n %d", *(tab + i));
+		for (int i = 0; i < nbElts; i++) printf("%d ", *(tab + i));
 		return 0;
 	}
 
