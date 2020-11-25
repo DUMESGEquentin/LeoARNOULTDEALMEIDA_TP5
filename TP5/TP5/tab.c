@@ -24,29 +24,17 @@ int afficheTab(int* tab, int size, int nbElts) {
 	}
 }
 int* ajoutElementDansTableau(int* tab, int* size, int* nbElts, int element) {
-	if (*size < 0 || tab == NULL || *size < *nbElts) {
-		return -1;
-	}
-	else if (*size == *nbElts) {
-		int *save = tab;
-		tab = (int*) realloc(tab, (*size + TAILLEAJOUT) * sizeof(int));
-		if (tab == NULL) {
-			tab = save;
-			printf("\n Mémoire insuffisante \n");
-			return(-1);
+	if (tab == NULL || size == NULL || nbElts == NULL || *size < 0 || *nbElts < 0) { return NULL; }     // Si les valeurs entrées sont non , alors on retourne NULL.
+	if (*nbElts + 1 > * size) {      // Test si dépassement de capacité.
+		int* tmp = tab;       // Sauvegarde de l'ancien pointeur dans un pointeur temporaire "tmp".
+		tab = (int*)realloc(tab, (*size + TAILLEAJOUT) * sizeof(int));     // Allocation de la mémoire supplémentaire.
+		if (tab == NULL) {      // Vérification que la mémoire a bien été allouée.
+			tab = tmp;
+			return NULL;
 		}
-		else {
-			*size += TAILLEAJOUT;
-			*nbElts += 1;
-			*(tab + *nbElts) = element;
-			return *nbElts;
-		}
+		*size += TAILLEAJOUT;
 	}
-	else {
-		*(tab+*nbElts) = element;
-		*nbElts += 1;
-		return *nbElts;
-	}
-
-
+	*(tab + *nbElts) = element;
+	*nbElts += 1;
+	return tab;
 }
