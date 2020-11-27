@@ -7,4 +7,6 @@ typedef struct Tableau {
 TABLEAU newArray();
 int incrementArraySize(TABLEAU* tab, int incrementValue);
 int setElement(TABLEAU* tab, int pos, int element);
-#define TAILLEINITIALE 100
+int displayElements(TABLEAU* tab, int startPos, int endPos);
+int deleteElements(TABLEAU* tab, int startPos, int endPos);
+#define TAILLEINITIALE 20
