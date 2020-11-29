@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define TAB2SIZE 100
+#define TAB2SIZE 100 // on crée une variable globale
 
 int main() {
 	int myTab1[10]; //on crée le tableau
@@ -25,11 +25,12 @@ int main() {
 	
 	afficheTab(myTab2, tabSize, nbElts); //affichage des 20 premieres valeurs
 
-	myTab2 = ajoutElementDansTableau(myTab2, &tabSize, &nbElts, 30); //on ajoute 30 au tableau (si on met TAB2SIZE = 20 voir fonction)
+	myTab2 = ajoutElementDansTableau(myTab2, &tabSize, &nbElts, 21); //on ajoute 30 au tableau (si on met TAB2SIZE = 20 voir fonction)
 	printf("\n");
 	afficheTab(myTab2, tabSize, nbElts); //on affiche aprés ajout
 
-
+	// ce j'ai fait le test d'ajouter 21 au tableau avec TAB2SIZE = 100 et pour tester le dépassement j'ai mis TAB2SIZE = 20 et ça marche dans
+	// les deux cas
 
 	free(myTab2); //on détruit le tableau
 
